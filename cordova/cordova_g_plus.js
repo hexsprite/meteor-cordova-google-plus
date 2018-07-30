@@ -8,27 +8,30 @@
  * @param {function} 'callback' only 'error' arg if any
  */
 
-Meteor.cordova_g_plus = function(request, callback) {
-  window.plugins.googleplus.login({
+Meteor.cordova_g_plus = function (request, callback) {
+  window.plugins.googleplus.login(
+    {
+      scopes:
+        'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
       offline: true,
-      webClientId: request.webClientId,
+      webClientId: request.webClientId
     },
 
-    function(response) {
-      request.email = response.email;
-      request.idToken = response.idToken;
-      request.userId = response.userId;
+    function (response) {
+      request.email = response.email
+      request.idToken = response.idToken
+      request.userId = response.userId
 
       Accounts.callLoginMethod({
         methodArguments: [request],
-        userCallback: callback,
-      });
+        userCallback: callback
+      })
     },
 
-    function(error) {
-      if (callback && (typeof callback == "function")) {
-        callback(error);
+    function (error) {
+      if (callback && typeof callback == 'function') {
+        callback(error)
       }
     }
-  );
-};
+  )
+}
