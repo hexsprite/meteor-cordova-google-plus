@@ -26,12 +26,14 @@ Accounts.registerLoginHandler(request => {
 })
 
 const getTokens = request => {
+  const config = ServiceConfiguration.configurations.findOne({
+    service: 'google'
+  })
   const result = HTTP.post('https://www.googleapis.com/oauth2/v4/token', {
     params: {
       code: request.serverAuthCode,
-      client_id:
-        '788198230675-8b5vb3m7iari3v7c8a6n7bd4ao9hkis6.apps.googleusercontent.com',
-      client_secret: 'L5EBtXBTKEY56kn0P23dCI5l',
+      client_id: config.clientId,
+      client_secret: config.secret,
       grant_type: 'authorization_code',
       redirect_uri: 'http://localhost:3000/_oauth/google'
     }
