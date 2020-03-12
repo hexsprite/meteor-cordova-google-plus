@@ -16,7 +16,7 @@ Accounts.registerLoginHandler(request => {
     !allowNewAccount
     && !Meteor.users.findOne({'services.google.email': request.email})
   ) {
-    throw new Meteor.Error(401, 'Signup from this the iOS app is not possible.')
+    throw new Meteor.Error(401, 'Signup from this iOS app is not allowed.')
   }
   return Accounts.updateOrCreateUserFromExternalService(
     'google',
