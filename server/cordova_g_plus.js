@@ -11,13 +11,13 @@ Accounts.registerLoginHandler(request => {
 
   const tokens = getTokens(request)
   const serviceData = getServiceDataFromTokens(tokens)
-  const allowNewAccount = Meteor.isDevelopment
-  if (
-    !allowNewAccount
-    && !Meteor.users.findOne({'services.google.email': request.email})
-  ) {
-    throw new Meteor.Error(401, 'Signup from this iOS app is not allowed.')
-  }
+  // const allowNewAccount = Meteor.isDevelopment
+  // if (
+  //   !allowNewAccount
+  //   && !Meteor.users.findOne({'services.google.email': request.email})
+  // ) {
+  //   throw new Meteor.Error(401, 'Signup from this iOS app is not allowed.')
+  // }
   return Accounts.updateOrCreateUserFromExternalService(
     'google',
     {
