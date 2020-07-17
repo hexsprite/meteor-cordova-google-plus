@@ -21,6 +21,7 @@ Accounts.registerLoginHandler(request => {
   return Accounts.updateOrCreateUserFromExternalService(
     'google',
     {
+      cordovaGPlus: true,
       id: request.userId,
       idToken: tokens.idToken,
       accessToken: tokens.accessToken,
