@@ -7,12 +7,18 @@
  * 
  * @param {function} 'callback' only 'error' arg if any
  */
+const scopes = [
+  // 'https://www.googleapis.com/auth/calendar',
+  'https://www.googleapis.com/auth/calendar.events.readonly',
+  'https://www.googleapis.com/auth/calendar.app.created',
+  'https://www.googleapis.com/auth/userinfo.profile',
+  'https://www.googleapis.com/auth/userinfo.email',
+].join(' ')
 
-Meteor.cordova_g_plus = function (request, callback) {
+Meteor.cordova_g_plus = function (request, callback, scopes=scopes) {
   window.plugins.googleplus.login(
     {
-      scopes:
-        'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+      scopes,
       offline: true,
       webClientId: request.webClientId
     },
