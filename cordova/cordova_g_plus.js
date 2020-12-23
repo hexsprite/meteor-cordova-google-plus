@@ -8,9 +8,6 @@
  * @param {function} 'callback' only 'error' arg if any
  */
 const defaultScopes = [
-  // 'https://www.googleapis.com/auth/calendar',
-  'https://www.googleapis.com/auth/calendar.events.readonly',
-  'https://www.googleapis.com/auth/calendar.app.created',
   'https://www.googleapis.com/auth/userinfo.profile',
   'https://www.googleapis.com/auth/userinfo.email',
 ].join(' ')
