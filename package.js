@@ -14,8 +14,8 @@ Package.onUse(function (api) {
 
   api.imply(['accounts-base'], ['client', 'server'])
 
-  api.add_files(['server/cordova_g_plus.js'], ['server'])
-  api.add_files(['cordova/cordova_g_plus.js'], ['web.cordova'])
+  api.addFiles(['server/cordova_g_plus.js'], ['server'])
+  api.addFiles(['cordova/cordova_g_plus.js'], ['web.cordova'])
 })
 
 Package.onTest(function (api) {
